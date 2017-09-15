@@ -32,13 +32,7 @@ public class Vagar extends AlgoritmoMovimentacao {
         Direcionamento output = new Direcionamento();
         output.velocidade = agente.getOrientacaoComoVetor().scl(maxVelocidade);
         output.rotacao = randomBinomial() * maxAngular;
-        //output.velocidade =
-        // calcula que direção tomar (configura um objeto Direcionamento 
-        // e o retorna)
-        // ...
-        // super.alvo já contém a posição do alvo
-        // agente (parâmetro) é a pose do agente que estamos guiando
-        // ...
+        agente.olharNaDirecaoDaVelocidade(output.velocidade);
         return output;
     }
 

@@ -4,7 +4,6 @@ import br.cefetmg.games.movement.AlgoritmoMovimentacao;
 import br.cefetmg.games.movement.Direcionamento;
 import br.cefetmg.games.movement.Pose;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 /**
@@ -29,11 +28,12 @@ public class Buscar extends AlgoritmoMovimentacao {
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
         
-        Vector3 posicao = agente.posicao;
-        Vector3 objetivo = super.alvo.getObjetivo();
+        Vector3 posicao = new Vector3(agente.posicao);
+        Vector3 objetivo = new Vector3(super.alvo.getObjetivo());
         
           output.velocidade = objetivo.sub(posicao).clamp(0.0f, maxVelocidade);
           
+          agente.olharNaDirecaoDaVelocidade(output.velocidade);
         return output;
     }
 
